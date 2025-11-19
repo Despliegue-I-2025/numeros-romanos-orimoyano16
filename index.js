@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3001;
-
-app.use(express.json());
+const PORT = process.env.PORT || 3000;
 
 // Romanos a Arábigos
 app.get('/r2a', (req, res) => {
