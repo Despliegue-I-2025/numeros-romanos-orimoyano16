@@ -1,26 +1,18 @@
 {
-  "name": "romanos",
+  "name": "conver-romano",
   "version": "1.0.0",
-  "main": "romanos.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node romanos.js",
-    "dev": "nodemon romanos.js",
-    "test": "jest --coverage"
+    "start": "node index.js",
+    "test": "jest --verbose --coverage",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "serverless-http": "^3.2.0"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "supertest": "^6.3.3",
+    "supertest": "^6.3.4",
     "nodemon": "^3.0.1"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/.vercel/"
-    ]
   }
 }
