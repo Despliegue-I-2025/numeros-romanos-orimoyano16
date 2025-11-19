@@ -1,18 +1,23 @@
 {
-  "name": "tateti-random",
+  "name": "romanos",
   "version": "1.0.0",
-  "main": "tateti-random.js",
+  "main": "romanos.js",
   "scripts": {
-    "start": "node tateti-random.js",
-    "test": "jest"
+    "start": "node romanos.js",
+    "dev": "nodemon romanos.js",
+    "test": "jest --coverage"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "serverless-http": "^3.2.0"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.0.1"
   },
   "jest": {
+    "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/.vercel/"
