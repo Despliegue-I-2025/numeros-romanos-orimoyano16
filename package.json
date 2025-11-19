@@ -1,21 +1,18 @@
 {
-  "name": "tateti-random",
+  "name": "conver-romano",
   "version": "1.0.0",
-  "main": "tateti-random.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node tateti-random.js",
-    "test": "jest"
+    "start": "node index.js",
+    "test": "jest --verbose --coverage",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/.vercel/"
-    ]
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4",
+    "nodemon": "^3.0.1"
   }
 }
