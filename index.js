@@ -1,6 +1,12 @@
 const express = require('express');
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors({
+  origin: "https://evaluador-romanos.vercel.app/",  // dominio permitido
+  methods: ["GET", "POST"],                  // métodos permitidos
+}));
 
 // Romanos a Arábigos
 app.get('/r2a', (req, res) => {
