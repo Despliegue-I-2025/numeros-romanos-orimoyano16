@@ -98,6 +98,7 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+/*
 // Ruta de información
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -114,6 +115,9 @@ app.get('/', (req, res) => {
   });
 });
 
+*/
+
+/*
 // Manejo de rutas no encontradas
 app.use('*', (req, res) => {
   res.status(404).json({
@@ -123,6 +127,8 @@ app.use('*', (req, res) => {
     availableEndpoints: ['/r2a', '/a2r', '/health', '/']
   });
 });
+*/
+
 
 /**
  * Convierte un número romano (string) a número arábigo (int).
