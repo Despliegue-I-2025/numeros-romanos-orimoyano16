@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: "https://evaluador-romanos.vercel.app/",  // dominio permitido
+  origin: "*",  // dominio permitido
   methods: ["GET", "POST"],                  // métodos permitidos
 }));
 
