@@ -228,17 +228,16 @@ function arabicToRoman(arabic) {
 }
 
 // Iniciar servidor
-if (require.main === module) {
-  const server = app.listen(PORT, () => {
-    console.log(`✅ Servidor escuchando en el puerto ${server.address().port}`);
-  });
-
-  server.on('error', (error) => {
-    if (error.code === 'EADDRINUSE') {
-      const newPort = Number(PORT) + 1;
-      app.listen(newPort);
-    }
-  });
+// Exportación para Vercel - 
+if (process.env.VERCEL) {
+  // Para producción en Vercel
+  module.exports = (req, res) => app(req, res);
+} else {
+  // Para desarrollo local
+  if (require.main === module) {
+    const server = app.listen(PORT, () => {
+      console.log(`✅ Servidor escuchando en el puerto ${server.address().port}`);
+    });
+  }
+  module.exports = { app, romanToArabic, arabicToRoman };
 }
-
-module.exports = { app, romanToArabic, arabicToRoman };
