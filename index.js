@@ -1,12 +1,27 @@
 const express = require('express');
-const cors = require("cors");
+//const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+export default function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Requerido para solicitudes preflight
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  res.status(200).json({ message: "CORS habilitado" });
+}
+
+/*
 app.use(cors({
   origin: "*",  // dominio permitido
   methods: ["GET", "POST"],                  // métodos permitidos
 }));
+*/
 
 // Romanos a Arábigos
 app.get('/r2a', (req, res) => {
