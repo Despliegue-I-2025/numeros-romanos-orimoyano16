@@ -142,3 +142,41 @@ describe('API de Conversión de Números Romanos', () => {
     });
   });
 });
+
+
+
+
+describe('GET /a2r', () => {
+  it('debería convertir un número válido correctamente', async () => {
+    const res = await request(app).get('/a2r?arabic=12');
+    expect(res.status).toBe(200);
+    expect(res.body.roman).toBe('XII');
+    expect(res.body.arabic).toBe(12);
+    expect(res.body.message).toBe('Conversión exitosa');
+  });
+
+  it('debería rechazar números con caracteres extra', async () => {
+    const res = await request(app).get('/a2r?arabic=12abc');
+    expect(res.status).toBe(400);
+    expect(res.body.code).toBe('INVALID_NUMBER');
+    expect(res.body.details).toBe('"12abc" no es un número válido');
+  });
+
+  it('debería rechazar valores negativos', async () => {
+    const res = await request(app).get('/a2r?arabic=-5');
+    expect(res.status).toBe(400);
+    expect(res.body.code).toBe('INVALID_NUMBER');
+  });
+
+  it('debería rechazar strings vacíos', async () => {
+    const res = await request(app).get('/a2r?arabic=');
+    expect(res.status).toBe(400);
+    expect(res.body.code).toBe('INVALID_PARAM_TYPE');
+  });
+
+  it('debería rechazar cuando no se pasa el parámetro', async () => {
+    const res = await request(app).get('/a2r');
+    expect(res.status).toBe(400);
+    expect(res.body.code).toBe('MISSING_PARAM');
+  });
+});

@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
 /*
 app.use(cors({
   origin: "*",  // dominio permitido
@@ -70,7 +69,13 @@ app.get('/a2r', (req, res) => {
         code: 'INVALID_PARAM_TYPE'
       });
     }
-
+    if (!/^\d+$/.test(raw)) {
+      return res.status(400).json({
+        error: 'El parámetro arabic debe ser un número entero positivo válido.',
+        code: 'INVALID_NUMBER',
+        details: `"${raw}" no es un número válido`
+      });
+    }
     const arabicNumber = parseInt(raw, 10);
     if (isNaN(arabicNumber)) {
       return res.status(400).json({ 
