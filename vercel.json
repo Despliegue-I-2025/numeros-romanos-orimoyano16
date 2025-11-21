@@ -2,21 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js",
+      "src": "romanos.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/index.js",
-        "headers": [
-          { "key": "Access-Control-Allow-Origin", "value": "*" },
-          { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
-          { "key": "Access-Control-Allow-Headers", "value": "Content-Type" },
-          { "key": "X-Content-Type-Options", "value": "nosniff" },
-          { "key": "X-Frame-Options", "value": "DENY" }
-        ]
+    {
+      "src": "/(.*)",
+      "dest": "/romanos.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY"
       }
-    ]
+    }
+  ]
+
 }
